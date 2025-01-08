@@ -5,8 +5,11 @@ set nocompatible           " Don't run in backwards compatible mode.
 
 set directory=$HOME/.vim/swap// " Note that double delimiter at the end; this settings won't work correctly without it!
 
-let s:homecache = exists('$XDG_CACHE_HOME') ? $XDG_CACHE_HOME : $HOME . '/.cache'
-exec 'set viminfo+=' . 'n' . s:homecache . '/vim/viminfo'
+let s:viminfodir = (exists('$XDG_CACHE_HOME') ? $XDG_CACHE_HOME : $HOME . '/.cache') . '/vim'
+if !isdirectory(s:viminfodir)
+  call mkdir(s:viminfodir, 'p')
+endif
+let &viminfofile=s:viminfodir . "/viminfo"
 
 set autoindent             " Respect indentation when starting a new line.
 autocmd filetype python set expandtab	 " Expand tabs to sapces (for Python).
