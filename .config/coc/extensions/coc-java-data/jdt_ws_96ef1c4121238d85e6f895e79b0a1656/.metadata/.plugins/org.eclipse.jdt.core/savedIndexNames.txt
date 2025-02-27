@@ -1,0 +1,19 @@
+INDEX VERSION 1.131+/Users/derek/.config/coc/extensions/coc-java-data/jdt_ws_96ef1c4121238d85e6f895e79b0a1656/.metadata/.plugins/org.eclipse.jdt.core
+3118500190.index
+3357297325.index
+3447507594.index
+1585658496.index
+370524910.index
+204789274.index
+3086358496.index
+2638369952.index
+2784556087.index
+95034977.index
+3108247668.index
+3842426239.index
+1242665100.index
+2775173860.index
+1077367406.index
+3567094284.index
+3903637757.index
+538462603.index

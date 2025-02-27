@@ -1,0 +1,323 @@
+: 1719213770:0;brew search sheldon
+: 1719213795:0;cd ~/.config/zsh
+: 1719213798:0;ls -al
+: 1719213814:0;vi .env.sh
+: 1719213893:0;vi ~/.zshenv
+: 1719213921:0;vi ~/.zprofile
+: 1719294289:0;brew untap homebrew/cask-fonts
+: 1719294354:0;brew uninstall autoconf@2.69
+: 1719296670:0;which brew
+: 1719296834:0;brew list
+: 1719296871:0;brew info git-flow
+: 1719296889:0;brew info git-flow-avh
+: 1719297025:0;tldr zsh
+: 1719297057:0;info zsh
+: 1719297063:0;man zsh
+: 1719298290:0;cd /usr/local
+: 1719298299:0;cd share
+: 1719298329:0;print $ZFPX
+: 1719298337:0;print $ZPFX
+: 1719298367:0;cd ~/.config/local/share/zinit
+: 1719298375:0;cd plugins
+: 1719298947:0;brew search config
+: 1719299028:0;which cd
+: 1719299187:0;.
+: 1719299254:0;tmux
+: 1719299304:0;cd Downloads
+: 1719299310:0;cd tmux-3.4
+: 1719299316:0;./configure
+: 1719299362:0;./configure --disable-utf8proc --prefix=$PWD --quiet
+: 1719299728:0;cd ~/.config/local/share/zinit/plugins/tmux
+: 1719299732:0;cd ~/.config/local/share/zinit/plugins/
+: 1719299741:0;cd tmux---tmux
+: 1719299763:0;./configure --diable-utf8proc --prefix=$PWD --quite
+: 1719299771:0;./configure --diable-utf8proc --prefix=$PWD --quiet
+: 1719299788:0;ll configure*
+: 1719299805:0;~
+: 1719300303:0;brew search aclocal
+: 1719300332:0;which aclocal
+: 1719300659:0;v ~/.config/zsh/.preset.sh
+: 1719300739:0;mv ~/.config/zsh/.env.sh ~/.config/zsh/.postset.sh
+: 1719300752:0;v ~/.config/zsh/.postset.sh
+: 1719300837:0;v ~/.config/zsh/.proxy.sh
+: 1719300923:0;v ~/.config/zsh/.zshrc
+: 1719300985:0;zi delete tmux/tmux
+: 1719301023:0;which tmux
+: 1719301035:0;v ~/.config/alacritty/alacritty.toml
+: 1719301496:0;print $PATH
+: 1719301533:0;print $PATH | grep homebrew
+: 1719301542:0;brew doctor
+: 1719301890:0;ls -al /usr/local/bin/zsh
+: 1719301917:0;/opt/homebrew/bin/zsh --version
+: 1719301927:0;/usr/local/bin/zsh --version
+: 1719301948:0;ls -ahl /usr/local/bin/zsh
+: 1719302331:0;zsh -?
+: 1719302334:0;zsh --help
+: 1719302407:0;zsh --help | grep command
+: 1719302448:0;zsh -l -c "tmux attach || tmux"
+: 1719302594:0;v ~/.zshenv
+: 1719302977:0;/usr/local/bin/zsh --login -c "tmux attach | tmux"
+: 1719303031:0;/opt/homebrew/bin/zsh -l -c "tmux attach | tmux"
+: 1719303168:0;/bin/bash --login -c "tmux"
+: 1719303180:0;/bin/bash --login -c "tmux attach"
+: 1719303194:0;/bin/bash --login -c "tmux attach | tmux"
+: 1719303519:0;/usr/local/bin/zsh -l -l "tmux attach || tmux"
+: 1719303524:0;/usr/local/bin/zsh -l -c "tmux attach || tmux"
+: 1719564040:0;brew uninstall tmux
+: 1719564476:0;brew install tmux
+: 1719564610:0;zi delete starship/starship
+: 1719564707:0;tmux attach || tmux
+: 1732245205:0;echo $SHELL_SESSIONS_DISABLE
+: 1732245554:0;ll /opt/homebrew/opt/gnu-getopt/bin/getopt
+: 1732245727:0;echo $PATH\ 
+: 1732245774:0;brew --prefix
+: 1732245840:0;ll .cargo
+: 1732246436:0;type -h
+: 1732246441:0;type --help
+: 1732252262:0;info type
+: 1732252629:0;man zshcontrib
+: 1732252883:0;lt ~/.config/zsh
+: 1732252960:0;man type
+: 1732252967:0;run-help type
+: 1732253475:0;ll ~/.config
+: 1732253480:0;ll ~/.config/zsh
+: 1732254122:0;type [
+: 1732254128:0;type {
+: 1732254135:0;type [[
+: 1732254144:0;type "[["
+: 1732254160:0;whence "[["
+: 1732254169:0;whence -v "[["
+: 1732254174:0;whence -ca "[["
+: 1732254180:0;whence -w "[["
+: 1732254212:0;whence -w [
+: 1732254237:0;whence -f [
+: 1732254244:0;whence -c [
+: 1732254264:0;whence -p [
+: 1732254289:0;whence -s [
+: 1732254294:0;whence - [
+: 1732254297:0;whence -S [
+: 1732254314:0;which "[["
+: 1732254322:0;which "["
+: 1732254352:0;where [
+: 1732254378:0;whence where
+: 1732254383:0;whence -v where
+: 1732254424:0;type zstyle
+: 1732254433:0;help where
+: 1732254478:0;man zstyle
+: 1732254579:0;where run-help
+: 1732254596:0;echo $HELPDIR
+: 1732254652:0;ll -/opt/homebrew/Cellar/zsh/5.9/share/zsh/help
+: 1732254888:0;brew search zsh
+: 1732255079:0;help zstyle
+: 1732255103:0;help zshmodule
+: 1732255108:0;help zshmodules
+: 1732256157:0;zstyle
+: 1732258677:0;fc-list family --sort | grep 'Jet'
+: 1732258700:0;fc-list sort --family | grep 'Jet'
+: 1732258807:0;fc-list family | grep 'Jet'
+: 1732258814:0;fc-list family
+: 1732258818:0;fc-list
+: 1732258829:0;fc-list | grep 'Jet'
+: 1732259284:0;fc-list | sort -f | grep 'Jet'
+: 1732259294:0;fc-list family | sort -f | grep 'Jet'
+: 1732259311:0;fc-list : family | sort -f | grep 'Jet'
+: 1732259322:0;help fc-list
+: 1732259329:0;man fc-list
+: 1732259336:0;fc-list -h
+: 1732259374:0;brew search JetBrains
+: 1732259770:0;fc-list : family | sort -f 
+: 1732259854:0;fc-list : family | sort -f | uniq
+: 1732260735:0;man autoload
+: 1732260739:0;help autoload
+: 1732261534:0;echo $_comps
+: 1732261538:0;echo $_comps[@]
+: 1732261547:0;set
+: 1732262164:0;rm ~/.local/share/zinit
+: 1732262403:0;rm ~/.cache/zinit
+: 1732263620:0;brew search star
+: 1732264354:0;which starship
+: 1732264426:0;type starship
+: 1732264441:0;man -q startship
+: 1732264453:0;type -q starship
+: 1732264460:0;help type
+: 1732265558:0;brew cleanup --prun all
+: 1732496651:0;brew upgrade vi
+: 1732496881:0;zoxide --help
+: 1732497148:0;vz $XDG_CONFIG_HOME/zsh/.zshrc
+: 1732497473:0;brew --prefix asdf
+: 1732497487:0;brew --prefix gnu-getopt
+: 1732497491:0;brew --prefix getopt
+: 1732497681:0;where go
+: 1732497893:0;type getopt
+: 1732511336:0;type command
+: 1732515056:0;echo $?
+: 1732515269:0;type z
+: 1732515285:0;z -h
+: 1732515288:0;z --help
+: 1732515295:0;which zoxide
+: 1732515320:0;which go
+: 1732515323:0;type go
+: 1732515488:0;man typeset
+: 1732515494:0;help typeset
+: 1732525154:0;type typeset
+: 1732601218:0;vz
+: 1732601800:0;ll /opt/homebrew/Cellar/zsh/5.9/share/zsh/help
+: 1732601843:0;brew reinstall git-flow-avh
+: 1732601965:0;history
+: 1732603129:0;help 
+: 1732603135:0;help declare
+: 1732608608:0;vz ~/.config/starship.toml
+: 1732608917:0;type x
+: 1732611059:0;git-flow hotfix list
+: 1732611083:0;git fetch --all
+: 1732611105:0;git config --list
+: 1732611110:0;git config --list --local
+: 1732611172:0;git-flow ho\
+
+: 1732611246:0;git checkout hotfix/2.3.3-1732610310
+: 1732611560:0;echo $PATH
+: 1732611818:0;rm holter-client
+: 1732611841:0;git clone ssh://git@repo.jdremedical.in/hol/holter-client.git
+: 1732611991:0;holter-client
+: 1732612011:0;git-flow init -d
+: 1732612018:0;git-flow hotfix track 2.3.3-1732610310
+: 1732612040:0;git-flow hotfix track --showcommands 2.3.3-1732610310
+: 1732612062:0;git flow hotfix --showcommands track 2.3.3-1732610310
+: 1732612083:0;git flow hotfix track --showcommands 2.3.3-1732610310
+: 1732612120:0;git-flow hotfix finish --showcommands -m 'DoctorSeparate' -p
+: 1732612180:0;git checkout -- .
+: 1732612310:0;git co --ours extraResources/borsamABMPClient.zip
+: 1732612336:0;git merge --abort
+: 1732612391:0;git push master
+: 1732612407:0;git push master orign master
+: 1732612447:0;git co master
+: 1732612579:0;git branch
+: 1732612598:0;git co hotfix/2.3.3-1732610310 
+: 1732612626:0;git push -d hotfix/2.3.3-1732610310 origin:
+: 1732612642:0;git push -d hotfix/2.3.3-1732610310 :origin
+: 1732612716:0;git push origin :hotfix/2.3.3-1732610310 
+: 1732612740:0;git branch -d hotfix/2.3.3-1732610310 
+: 1732612762:0;git branch -D hotfix/2.3.3-1732610310 
+: 1732612915:0;../hol-server
+: 1732613269:0;git config --local --list
+: 1732613293:0;git config --local remote.origin.url ssh://git@repo.jdremedical.in/hol/hol-server.git
+: 1732613371:0;git-flow release start --showcommands 2.5.9-$(date +%s)
+: 1732613419:0;git-flow release publish --showcommands 2.5.9-1732613371
+: 1732613739:0;z abpm-client
+: 1732613760:0;..
+: 1732613770:0;../abpm
+: 1732613774:0;cd repo
+: 1732613781:0;abpm-client
+: 1732613803:0;git config --local remote.origin.url
+: 1732613928:0;git config --local remote.origin.url ssh://git@repo.jdremedical.in/abpm/abpm-client.git
+: 1732613978:0;git-flow release start --showcommands 0.3.0-$(date +%s)
+: 1732614018:0;git-flow release publish --showcommands 0.3.0-1732613978
+: 1732614462:0;git-flow release finish --showcommands -m 'DoctorSignSearchOpt' -p --ff-master
+: 1732614670:0;../holter-client
+: 1732614672:0;ll
+: 1732614675:0;git tag
+: 1732614691:0;git branch -a
+: 1732671924:0;cd
+: 1732672027:0;git restore ekg-common/src/main/java/com/jdremedical/common/constant/AllocationConstants.java
+: 1732672067:0;git-flow feature track --showcommands diagnose-status
+: 1732672710:0;git mergetool
+: 1732673524:0;git rebase --continue 
+: 1732673591:0;git push --force
+: 1732673668:0;git-flow feature finish --rebase --push --nokeep
+: 1732676283:0;../ekg-interp
+: 1732676401:0;vz .
+: 1732684621:0;vz $XDG_CONFIG_HOME/zsh
+: 1732686213:0;ll ~/.local/share/.zim
+: 1732686229:0;ll ~/.local/share/.zim/modules/completion
+: 1732687643:0;help zle
+: 1732687660:0;help zshzle
+: 1732689709:0;which git-feature
+: 1732689716:0;git-feature --help
+: 1732689770:0;git branch -d feature/--help 
+: 1732689790:0;help git-release
+: 1732689825:0;help git-feature
+: 1732690016:0;ll /opt/homebrew/bin/git-flow
+: 1732690029:0;ll /opt/homebrew/bin/
+: 1732690052:0;where ll
+: 1732690293:0;ll /opt/homebrew/bin
+: 1732690464:0;help git-flow
+: 1732690473:0;git-flow --help
+: 1732690489:0;git-flow help feature
+: 1732690509:0;git-flow feature help track
+: 1732690523:0;git-flow feature track --help
+: 1732690533:0;git-flow feature finish --help
+: 1732691122:0;z ekg-center
+: 1732697688:0;fc-list : family | sort -f | uniq | grep 'Fan'
+: 1732757342:0;brew upgrade
+: 1732757351:0;brew upgrade visual-studio-code zed
+: 1732758396:0;brew update
+: 1732758409:0;which zsh
+: 1732758419:0;print $SHELL
+: 1732758425:0;help print
+: 1732758849:0;brew list | grep 'font'
+: 1732759261:0;brew uninstall font-comic-shanns-mono-nerd-font
+: 1732759312:0;brew uninstall font-comic-mono font-commit-mono-nerd-font
+: 1732759319:0;brew cleanup --prune=all
+: 1732761179:0;brew search macon
+: 1732773230:0;z ekg-interp
+: 1732773238:0;zed .
+: 1732780144:0;vz ~/.config/wezterm/wezterm.lua
+: 1732780189:0;fc-list : family | sort -f | uniq | grep 'Commit'
+: 1732780236:0;brew install font-commit-mono-nerd-font
+: 1732780579:0;which 'git flow'
+: 1732781155:0;bindkey
+: 1732781598:0;alias
+: 1732781899:0;brew uninstall git-flow-avh
+: 1732781917:0;which git-flow
+: 1732781921:0;type git-flow
+: 1732782527:0;for command completion in ${kv)_comps:#-*(-|-,*)}\
+do\
+\
+\
+printf "%-32s %s\n" $command $completion\
+done | sort
+: 1732782597:0;for command completion in ${(kv)_comps:#-*(-|-,*)}\
+do\
+\
+\
+printf "%-32s %s\n" $command $completion\
+done | sort
+: 1732856884:0;ll ~/.git
+: 1732856887:0;ll ~/.git*
+: 1732857073:0;brew install git-flow-avh 
+: 1732857966:0;vz ~/.config/zsh
+: 1732858265:0;ll ~/.local/share/.zim/modules
+: 1732858272:0;ll ~/.local/share/.zim/modules/git-flow-completion
+: 1732858478:0;which getopt
+: 1732858539:0;functions
+: 1732858550:0;functions | grep 'flow'
+: 1732858880:0;printf $fpath
+: 1732858902:0;ll $fpath
+: 1732858958:0;which ll
+: 1732859052:0;ll /usr/share/zsh/5.9/functions
+: 1732859078:0;ll /usr/share/zsh/5.9/functions/_git
+: 1732859141:0;bat /usr/share/zsh/5.9/functions/_git
+: 1732859175:0;vz /usr/share/zsh/5.9/functions/_git
+: 1732859501:0;ll /opt/homebrew/opt/git-flow-avh/share/zsh
+: 1732859613:0;rm -fr ~/.local/share/.zim
+: 1732860648:0;zi update
+: 1732860949:0;git co master 
+: 1732860952:0;git pull
+: 1732860957:0;git co develop 
+: 1732860986:0;git flow hotfix track 2.3.3-1732758770
+: 1732861035:0;git flow co -b hotfix/2.3.3-1732758770 origin hotfix/2.3.3-1732758770
+: 1732861057:0;git co -b hotfix/2.3.3-1732758770 origin hotfix/2.3.3-1732758770
+: 1732861080:0;git co -b hotfix/2.3.3-1732758770 origin:hotfix/2.3.3-1732758770
+: 1732861093:0;git co hotfix/2.3.3-1732758770
+: 1732861118:0;git flow hotfix finish
+: 1732861317:0;git merge --abort 
+: 1732861321:0;git st
+: 1732861330:0;git push --all && git push --tags
+: 1732862811:0;git flow feature track fix-template
+: 1732863074:0;which complete
+: 1732863082:0;type complete
+: 1732863094:0;help complete
+: 1732864909:0;pwd
+: 1732865431:0;z holter-client
+: 1732865470:0;chsh -s /opt/homebrew/bin/fish
+: 1732865491:0;exit

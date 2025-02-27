@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.dc.biz.dao.po.UserRecordLog" table="USERRECORDLOGTBL">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="22" scale="0" />
+			<generator class="native"/>
+			<!-- 
+			<generator class="sequence">
+				<param name="sequence">SEQ_USERRECORDLOGTBL_ID</param>
+			</generator>
+			-->
+		</id>
+		<many-to-one name="ecgRecord" class="com.dc.biz.dao.po.EcgRecord" lazy="false" fetch="join">
+			<column name="RID" precision="22" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="user" class="com.dc.biz.dao.po.User" lazy="false" fetch="join">
+			<column name="USERID" precision="22" scale="0" not-null="true" />
+		</many-to-one>
+		<property name="operationTime" type="java.lang.String">
+			<column name="OPERATION_TIME" length="13" not-null="true" />
+		</property>
+		<property name="operationType" type="java.lang.String">
+			<column name="OPERATION_TYPE" length="2" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

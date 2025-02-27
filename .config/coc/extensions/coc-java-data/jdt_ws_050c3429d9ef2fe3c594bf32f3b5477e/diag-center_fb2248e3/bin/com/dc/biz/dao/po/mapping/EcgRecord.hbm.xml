@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dc.biz.dao.po.EcgRecord" table="ECGRECORDTBL">
+        <id name="rid" type="java.lang.Long">
+            <column name="RID" precision="22" scale="0" />
+            <generator class="native"/>
+            <!-- 
+            <generator class="sequence">
+				<param name="sequence">SEQ_ECGRECORDTBL_RID</param>
+			</generator>
+			-->
+        </id>
+        <property name="starttime" type="java.lang.String">
+            <column name="STARTTIME" length="13" />
+        </property>
+        <property name="conttime" type="java.lang.String">
+            <column name="CONTTIME" length="13" />
+        </property>
+        <property name="samplerate" type="java.lang.Float">
+            <column name="SAMPLERATE" precision="126" scale="0" />
+        </property>
+        <property name="nchannel" type="java.lang.Long">
+            <column name="NCHANNEL" precision="22" scale="0" />
+        </property>
+        <property name="nsample" type="java.lang.Long">
+            <column name="NSAMPLE" precision="22" scale="0" />
+        </property>
+        <property name="status" type="java.lang.Long">
+            <column name="STATUS" precision="22" scale="0" />
+        </property>
+        <property name="patientid" type="java.lang.String">
+            <column name="PATIENTID" length="64" />
+        </property>
+        <property name="admissionid" type="java.lang.String">
+            <column name="ADMISSIONID" length="64" />
+        </property>
+        <property name="bedid" type="java.lang.String">
+            <column name="BEDID" length="64" />
+        </property>
+        <property name="deptname" type="java.lang.String">
+            <column name="DEPTNAME" length="64" />
+        </property>
+        <property name="patientname" type="java.lang.String">
+            <column name="PATIENTNAME" length="128" />
+        </property>
+        <property name="patientbirth" type="java.lang.String">
+            <column name="PATIENTBIRTH" length="13" />
+        </property>
+        <property name="patientgender" type="java.lang.String">
+            <column name="PATIENTGENDER" length="1" />
+        </property>
+        <property name="pacemaker" type="java.lang.String">
+            <column name="PACEMAKER" length="1" />
+        </property>
+        <property name="history" type="java.lang.String">
+            <column name="HISTORY" length="2048" />
+        </property>
+        <property name="height" type="java.lang.Float">
+            <column name="HEIGHT" precision="126" scale="0" />
+        </property>
+        <property name="weight" type="java.lang.Float">
+            <column name="WEIGHT" precision="126" scale="0" />
+        </property>
+        <property name="collectdocid" type="java.lang.String">
+            <column name="COLLECTDOCID" length="30" />
+        </property>
+        <property name="authoritydocid" type="java.lang.String">
+            <column name="AUTHORITYDOCID" length="30" />
+        </property>
+        <property name="dataPath" type="java.lang.String">
+            <column name="DATA_PATH" length="512" />
+        </property>
+        <property name="rawdataPath" type="java.lang.String">
+            <column name="RAWDATA_PATH" length="512" />
+        </property>
+        <property name="serious" type="java.lang.Long">
+            <column name="SERIOUS" precision="22" scale="0" />
+        </property>
+        <property name="priority" type="java.lang.Long">
+            <column name="PRIORITY" precision="22" scale="0" />
+        </property>
+        <property name="studyinstuid" type="java.lang.String">
+            <column name="STUDYINSTUID" length="128" />
+        </property>
+        <property name="studydescription" type="java.lang.String">
+            <column name="STUDYDESCRIPTION" length="2048" />
+        </property>
+        <property name="studytimestamp" type="java.lang.String">
+            <column name="STUDYTIMESTAMP" length="13" />
+        </property>
+        <property name="seriesinstuid" type="java.lang.String">
+            <column name="SERIESINSTUID" length="128" />
+        </property>
+        <property name="seriesdescription" type="java.lang.String">
+            <column name="SERIESDESCRIPTION" length="2048" />
+        </property>
+        <property name="accessnum" type="java.lang.Long">
+            <column name="ACCESSNUM" precision="22" scale="0" />
+        </property>
+        <property name="sopinstuid" type="java.lang.String">
+            <column name="SOPINSTUID" length="128" />
+        </property>
+        <property name="origidx" type="java.lang.Long">
+            <column name="ORIGIDX" precision="22" scale="0" />
+        </property>
+        <property name="instnum" type="java.lang.String">
+            <column name="INSTNUM" length="128" />
+        </property>
+        <property name="channame" type="java.lang.String">
+            <column name="CHANNAME" length="256" />
+        </property>
+        <property name="chanbaseline" type="java.lang.String">
+            <column name="CHANBASELINE" length="256" />
+        </property>
+        <property name="chanskew" type="java.lang.String">
+            <column name="CHANSKEW" length="256" />
+        </property>
+        <property name="chansens" type="java.lang.String">
+            <column name="CHANSENS" length="256" />
+        </property>
+        <property name="chansenscorrfac" type="java.lang.String">
+            <column name="CHANSENSCORRFAC" length="256" />
+        </property>
+        <property name="unitmult2makemv" type="java.lang.String">
+            <column name="UNITMULT2MAKEMV" length="256" />
+        </property>
+        <property name="filterlowfreq" type="java.lang.String">
+            <column name="FILTERLOWFREQ" length="256" />
+        </property>
+        <property name="filterhifreq" type="java.lang.String">
+            <column name="FILTERHIFREQ" length="256" />
+        </property>
+        <property name="notchfilterfrequency" type="java.lang.String">
+            <column name="NOTCHFILTERFREQUENCY" length="256" />
+        </property>
+        <property name="notchfilterbandwidth" type="java.lang.String">
+            <column name="NOTCHFILTERBANDWIDTH" length="256" />
+        </property>
+        <property name="filtermethod" type="java.lang.String">
+            <column name="FILTERMETHOD" />
+        </property>
+        <property name="diagnosetime" type="java.lang.String">
+            <column name="DIAGNOSETIME" length="13" />
+        </property>
+        <property name="diagnoseinfo" type="java.lang.String">
+            <column name="DIAGNOSEINFO" length="2048" />
+        </property>
+        <property name="diagnosenote" type="java.lang.String">
+            <column name="DIAGNOSENOTE" length="2048" />
+        </property>
+        <property name="diagreportPath" type="java.lang.String">
+            <column name="DIAGREPORT_PATH" length="512" />
+        </property>
+        <property name="heartrate" type="java.lang.Long">
+            <column name="HEARTRATE" precision="22" scale="0" />
+        </property>
+        <property name="bloodpresslow" type="java.lang.Long">
+            <column name="BLOODPRESSLOW" precision="22" scale="0" />
+        </property>
+        <property name="bloodpresshigh" type="java.lang.Long">
+            <column name="BLOODPRESSHIGH" precision="22" scale="0" />
+        </property>
+        <property name="printerval" type="java.lang.Long">
+            <column name="PRINTERVAL" precision="22" scale="0" />
+        </property>
+        <property name="qrsinterval" type="java.lang.Long">
+            <column name="QRSINTERVAL" precision="22" scale="0" />
+        </property>
+        <property name="qt" type="java.lang.Long">
+            <column name="QT" precision="22" scale="0" />
+        </property>
+        <property name="qtc" type="java.lang.Long">
+            <column name="QTC" precision="22" scale="0" />
+        </property>
+        <property name="p" type="java.lang.Long">
+            <column name="P" precision="22" scale="0" />
+        </property>
+        <property name="qrs" type="java.lang.Long">
+            <column name="QRS" precision="22" scale="0" />
+        </property>
+        <property name="t" type="java.lang.Long">
+            <column name="T" precision="22" scale="0" />
+        </property>
+        <property name="rv5" type="java.lang.Float">
+            <column name="RV5" precision="126" scale="0" />
+        </property>
+        <property name="sv1" type="java.lang.Float">
+            <column name="SV1" precision="126" scale="0" />
+        </property>
+        <property name="rv5Sv1" type="java.lang.Float">
+            <column name="RV5_SV1" precision="126" scale="0" />
+        </property>
+        <property name="pwave" type="java.lang.Long">
+            <column name="PWAVE" precision="22" scale="0" />
+        </property>
+        <property name="attr1" type="java.lang.String">
+            <column name="ATTR1" length="256" />
+        </property>
+        <property name="attr2" type="java.lang.String">
+            <column name="ATTR2" length="256" />
+        </property>
+        <property name="attr3" type="java.lang.String">
+            <column name="ATTR3" length="256" />
+        </property>
+        <property name="attr4" type="java.lang.String">
+            <column name="ATTR4" length="256" />
+        </property>
+        <property name="bq" type="java.lang.String">
+            <column name="BQ" length="30" />
+        </property>
+        <property name="authorityDeptname" type="java.lang.String">
+            <column name="AUTHORITYDEPTNAME" length="64" />
+        </property>
+        <property name="authorityDoctorContact" type="java.lang.String">
+            <column name="AUTHORITY_DOCTOR_CONTACT" length="50" />
+        </property>
+        <property name="patientContact" type="java.lang.String">
+            <column name="PATIENT_CONTACT" length="50" />
+        </property>
+        <property name="clinicalDiagInfo" type="java.lang.String">
+            <column name="CLINICAL_DIAG_INFO" length="2048" />
+        </property>
+        <property name="uploadStatus" type="java.lang.String">
+            <column name="UPLOAD_STATUS" length="1" />
+        </property>
+        <property name="auditType" type="java.lang.Long">
+            <column name="AUDIT_TYPE" precision="22" scale="0" />
+        </property>
+        <property name="auditTime" type="java.lang.String">
+            <column name="AUDIT_TIME" length="20" />
+        </property>
+        <property name="auditDiagnoseInfo" type="java.lang.String">
+            <column name="AUDIT_DIAGNOSE_INFO" length="2048" />
+        </property>
+        <property name="auditSignature" type="java.lang.String">
+            <column name="AUDIT_SIGNATURE" length="256" />
+        </property>
+        <property name="auditPromptPath" type="java.lang.String">
+            <column name="AUDIT_PROMPT_PATH" length="256" />
+        </property>
+        <property name="diagId" type="java.lang.Long">
+            <column name="DIAG_ID" precision="22" scale="0" />
+        </property>
+        <property name="recordId" type="java.lang.Long">
+            <column name="RECORD_ID" precision="22" scale="0" />
+        </property>
+        <property name="recordType" type="java.lang.Long">
+            <column name="RECORD_TYPE" precision="22" scale="0" />
+        </property>
+        <property name="diagFileUrl" type="java.lang.String">
+            <column name="DIAG_FILE_URL" length="256" />
+        </property>
+        <property name="reportFileUrl" type="java.lang.String">
+            <column name="REPORT_FILE_URL" length="256" />
+        </property>
+        <property name="sysId" type="java.lang.String">
+            <column name="SYS_ID" length="256" />
+        </property>
+        <property name="mobile" type="java.lang.String">
+            <column name="MOBILE" length="20" />
+        </property>
+        <property name="condition" type="java.lang.String">
+            <column name="CONDITION" length="256" />
+        </property>
+        <property name="diagCallbackUrl" type="java.lang.String">
+            <column name="DIAG_CALLBACK_URL" length="256" />
+        </property>
+        <property name="equSource" type="java.lang.String">
+            <column name="EQU_SOURCE" length="255" />
+        </property>
+        <property name="isRedo" type="java.lang.String">
+            <column name="IS_REDO" length="1" />
+        </property>
+        <property name="atrialRate" type="java.lang.Long">
+            <column name="ATRIALRATE" precision="22" scale="0" />
+        </property>
+        <property name="doctorAnalysisValue" type="java.lang.String">
+            <column name="DOCTOR_ANALYSIS_VALUE" length="300" />
+        </property>
+        <property name="encryptTypes" type="java.lang.String">
+            <column name="ENCRYPT_TYPES" length="100" />
+        </property>
+        <many-to-one name="equipment" class="com.dc.biz.dao.po.Equipment" lazy="false" fetch="join">
+            <column name="EID" length="64" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.dc.biz.dao.po.User" lazy="false" fetch="join">
+            <column name="DIAGNOSEID" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="auditUser" class="com.dc.biz.dao.po.User" lazy="false" fetch="join">
+            <column name="AUDIT_DIAGNOSE_ID" precision="22" scale="0" />
+        </many-to-one>
+        <set name="userRecordLogs" inverse="true">
+            <key>
+                <column name="RID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.dc.biz.dao.po.UserRecordLog" />
+        </set>
+        <set name="userRecords" inverse="true" order-by="ID DESC">
+            <key>
+                <column name="RID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.dc.biz.dao.po.UserRecord" />
+        </set>
+    </class>
+</hibernate-mapping>

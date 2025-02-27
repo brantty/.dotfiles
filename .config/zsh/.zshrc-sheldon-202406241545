@@ -1,0 +1,19 @@
+
+[[ -f $ZDOTDIR/.zsh.sh ]] && . $ZDOTDIR/.zsh.sh
+
+# source your proxy shrc file if exists
+[[ -f $ZDOTDIR/.proxy.sh ]] && source $ZDOTDIR/.proxy.sh
+
+
+# source your own shrc file if exists
+[[ -f $ZDOTDIR/.env.sh ]] && source $ZDOTDIR/.env.sh
+
+# source your own alias file if exists
+[[ -f $ZDOTDIR/.alias.sh ]] && source $ZDOTDIR/.alias.sh
+
+# source your own function file if exists
+[[ -f $ZDOTDIR/.fun.sh ]] && source $ZDOTDIR/.fun.sh
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

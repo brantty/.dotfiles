@@ -1,0 +1,22 @@
+# font-family = "Source Code Pro"
+# font-feature = zero, -ss01, -ss02, -ss03, ss04, ss06, ss07
+# font-style = "Regular"
+# font-style-bold = "Medium"
+# font-style-italic = "Italic"
+# font-style-bold-italic = "Medium Italic"
+
+# font-family = "0xProto"
+
+font-family = "Red Hat Mono"
+font-style = "Regular"
+font-style-bold = "SemiBold"
+font-style-italic = "Italic"
+font-style-bold-italic = "SemiBold Italic"
+
+font-size = 16
+
+theme = "catppuccin-mocha"
+
+window-width =  300
+window-height = 100
+window-save-state = always

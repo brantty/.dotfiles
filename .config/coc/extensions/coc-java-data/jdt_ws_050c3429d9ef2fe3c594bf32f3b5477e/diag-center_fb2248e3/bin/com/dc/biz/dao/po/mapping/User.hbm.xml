@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dc.biz.dao.po.User" table="USERTBL">
+        <id name="userid" type="java.lang.Long">
+            <column name="USERID" precision="22" scale="0" />
+            <generator class="native"/>
+            <!-- 
+            <generator class="sequence">
+				<param name="sequence">SEQ_USERTBL_USERID</param>
+			</generator>
+			-->
+        </id>
+        <property name="regtime" type="java.lang.String">
+            <column name="REGTIME" length="13" not-null="true" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" length="32" not-null="true" />
+        </property>
+        <property name="balance" type="java.lang.Float">
+            <column name="BALANCE" precision="126" scale="0" not-null="true" />
+        </property>
+        <property name="role" type="java.lang.Long">
+            <column name="ROLE" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="GENDER" length="1" not-null="true" />
+        </property>
+        <property name="mobile" type="java.lang.String">
+            <column name="MOBILE" length="20" not-null="true" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="128" not-null="true" />
+        </property>
+        <property name="birthday" type="java.lang.String">
+            <column name="BIRTHDAY" length="13" not-null="true" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" length="512" not-null="true" />
+        </property>
+        <property name="docmaxdiagnum" type="java.lang.Long">
+            <column name="DOCMAXDIAGNUM" precision="22" scale="0" />
+        </property>
+        <property name="docmaxwaitnum" type="java.lang.Long">
+            <column name="DOCMAXWAITNUM" precision="22" scale="0" />
+        </property>
+        <property name="docmaxdownload" type="java.lang.Long">
+            <column name="DOCMAXDOWNLOAD" precision="22" scale="0" />
+        </property>
+        <property name="downstyle" type="java.lang.Long">
+            <column name="DOWNSTYLE" precision="22" scale="0" />
+        </property>
+        <property name="docpay" type="java.lang.Float">
+            <column name="DOCPAY" precision="126" scale="0" />
+        </property>
+        <property name="clid" type="java.lang.Long">
+            <column name="CLID" precision="22" scale="0" />
+        </property>
+        <property name="patientid" type="java.lang.String">
+            <column name="PATIENTID" length="64" />
+        </property>
+        <property name="height" type="java.lang.Float">
+            <column name="HEIGHT" precision="126" scale="0" />
+        </property>
+        <property name="weight" type="java.lang.Float">
+            <column name="WEIGHT" precision="126" scale="0" />
+        </property>
+        <property name="attr1" type="java.lang.String">
+            <column name="ATTR1" length="256" />
+        </property>
+        <property name="attr2" type="java.lang.String">
+            <column name="ATTR2" length="256" />
+        </property>
+        <property name="attr3" type="java.lang.String">
+            <column name="ATTR3" length="256" />
+        </property>
+        <property name="attr4" type="java.lang.String">
+            <column name="ATTR4" length="256" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="2" not-null="true" />
+        </property>
+        <property name="loginTime" type="java.lang.String">
+            <column name="LOGIN_TIME" length="13" />
+        </property>
+        <property name="lastOperationTime" type="java.lang.String">
+            <column name="LAST_OPERATION_TIME" length="13" />
+        </property>
+        <property name="isLock" type="java.lang.String">
+            <column name="IS_LOCK" length="1" />
+        </property>
+        <property name="failLoginCount" type="java.lang.Long">
+            <column name="FAIL_LOGIN_COUNT" precision="22" scale="0" />
+        </property>
+        <property name="lockTime" type="java.lang.String">
+            <column name="LOCK_TIME" length="13" />
+        </property>
+        <many-to-one name="consultationCenter" class="com.dc.biz.dao.po.ConsultationCenter" lazy="false" fetch="join">
+            <column name="CSID" precision="22" scale="0" />
+        </many-to-one>
+        <set name="userRecordLogs" inverse="true">
+            <key>
+                <column name="USERID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.dc.biz.dao.po.UserRecordLog" />
+        </set>
+        <set name="userRecords" inverse="true">
+            <key>
+                <column name="USERID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.dc.biz.dao.po.UserRecord" />
+        </set>
+        <set name="ecgRecords" inverse="true">
+            <key>
+                <column name="DIAGNOSEID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.dc.biz.dao.po.EcgRecord" />
+        </set>
+    </class>
+</hibernate-mapping>

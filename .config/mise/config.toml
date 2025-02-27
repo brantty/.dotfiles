@@ -1,0 +1,9 @@
+[tools]
+bun = "1.2.2"
+dotnet = "latest"
+go = "latest"
+neovim = "latest"
+node = "22.13.1"
+python = "3.13.2"
+zig = "latest"
+zls = "latest"

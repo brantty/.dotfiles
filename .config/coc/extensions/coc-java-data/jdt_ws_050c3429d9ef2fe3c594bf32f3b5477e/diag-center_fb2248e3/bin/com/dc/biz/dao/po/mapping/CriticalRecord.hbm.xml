@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dc.biz.dao.po.CriticalRecord" table="t_critical_record">
+        <id name="id" type="java.lang.Long">
+			<column name="id" precision="22" scale="0" />
+			<generator class="native"/>
+		</id>
+        <property name="ccContact" type="java.lang.String">
+            <column name="cc_contact" />
+        </property>
+        <property name="contactContent" type="java.lang.String">
+            <column name="contact_content" length="2048" not-null="true" />
+        </property>
+        <property name="contactTime" type="java.lang.String">
+            <column name="contact_time" length="20" not-null="true" />
+        </property>
+        <property name="userid" type="java.lang.String">
+            <column name="userid" not-null="true" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="username" not-null="true" />
+        </property>
+        <property name="nickname" type="java.lang.String">
+            <column name="nickname" not-null="true" />
+        </property>
+        <property name="contactType" type="java.lang.Long">
+            <column name="contact_type" not-null="true" />
+        </property>
+        <property name="source" type="java.lang.Long">
+            <column name="source" not-null="true" />
+        </property>
+        <property name="rid" type="java.lang.String">
+            <column name="rid" length="32" not-null="true" />
+        </property>
+        <property name="criticalPatientId" type="java.lang.String">
+            <column name="critical_patient_id" length="32" not-null="true" />
+        </property>
+        <property name="status" type="java.lang.Long">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="type" type="java.lang.Long">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="isInfarction" type="java.lang.Long">
+            <column name="is_infarction" not-null="true" />
+        </property>
+        <property name="createTime" type="java.lang.String">
+            <column name="create_time" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

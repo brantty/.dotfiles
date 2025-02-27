@@ -1,0 +1,166 @@
+#!/usr/bin/env zsh
+
+[[ -f "$ZDOTDIR/.preset.sh" ]] && source "$ZDOTDIR/.preset.sh"
+
+# source your proxy shrc file if exists
+[[ -f "$ZDOTDIR/.proxy.sh" ]] && source "$ZDOTDIR/.proxy.sh"
+
+# >>>> Vagrant command completion (start)
+fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
+# <<<<  Vagrant command completion (end)
+
+fpath=(
+    # /usr/share/zsh/site-functions
+    $ZDOTDIR/functions
+    "${fpath[@]}"
+)
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+### Added by Zinit's installer
+if [[ ! -f $XDG_DATA_HOME/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$XDG_DATA_HOME/zinit" && command chmod g-rwX "$XDG_DATA_HOME/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$XDG_DATA_HOME/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$XDG_DATA_HOME/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust \
+    zdharma-continuum/zinit-annex-submods \
+    zdharma-continuum/zinit-annex-readurl
+
+### End of Zinit's installer chunk
+
+# Load pure theme
+# zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
+# zinit light sindresorhus/pure
+# zi lucid light-mode compile"(pure|async).zsh" pick"async.zsh" src"pure.zsh" for \
+#     sindresorhus/pure
+zi lucid light-mode for \
+  as"program" \
+  from"gh-r" \
+  atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+  atpull"%atclone" \
+  src"init.zsh" \
+    starship/starship
+
+zi lucid light-mode wait for \
+    atinit"
+        ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+        ZSH_AUTOSUGGEST_USE_ASYNC=true
+        ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+        bindkey '  ' autosuggest-accept
+        bindkey '^ ' autosuggest-execute" \
+    atload'!_zsh_autosuggest_start' \
+    nocd \
+  zsh-users/zsh-autosuggestions \
+    light-mode \
+    atinit"
+      typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100;" \
+  zdharma-continuum/fast-syntax-highlighting \
+    atinit"
+        zstyle :history-search-multi-word page-size 10
+        zstyle :history-search-multi-word highlight-color fg=red,bold
+        zstyle :plugin:history-search-multi-word reset-prompt-protect 1" \
+    bindmap"^R -> ^H" \
+  zdharma-continuum/history-search-multi-word
+
+zi lucid light-mode wait for \
+  PZTM::environment \
+  PZTM::history \
+  PZTM::helper \
+  PZTM::completion \
+  PZTM::terminal \
+  PZTM::editor \
+  PZTM::directory
+
+# zi lucid light-mode wait for \
+#   OMZP::git
+
+# Programs
+zi lucid light-mode wait for \
+    from"gh-r" \
+    as"program" \
+  junegunn/fzf \
+    from"gh-r" \
+    as"program" \
+    mv"docker* -> docker-compose" \
+  docker/compose \
+    as"program" \
+    atclone"rm -f src/auto/config.cache; ./configure" \
+    atpull"%atclone" \
+    make \
+    pick"src/vim" \
+  vim/vim \
+    as"program" \
+    pick"$ZPFX/bin/git-*" \
+    make"PREFIX=$ZPFX" \
+  tj/git-extras
+
+# zi lucid light-mode for \
+#   as'null' \
+#   atclone'sh autogen.sh' \
+#   atpull'%atclone' \
+#   configure'--disable-utf8proc --prefix=$PWD --quiet' \
+#   make'PREFIX=$PWD --quiet install' \
+#   sbin \
+#     @tmux/tmux
+
+zi lucid light-mode wait for \
+  atload"source git-flow-completion.zsh" \
+    petervanderdoes/git-flow-completion
+
+# asdf
+# zinit lucid wait for \
+#     id-as"asdf" \
+#     atload"source ${ZINIT[PLUGINS_DIR]}/asdf*/asdf.sh; zicompinit; zicdreplay" \
+#     light-mode \
+#   @asdf-vm/asdf
+zi light-mode lucid for \
+  id-as"asdf" \
+  atload"source ${ZINIT[PLUGINS_DIR]}/asdf*/asdf.sh" \
+  completions \
+    @asdf-vm/asdf
+
+zi lucid light-mode wait for \
+  wfxr/forgit
+
+# zi lucid light-mode wait'[[ -n ${ZLAST_COMMANDS[(r)c*]} ]]' pick"init.sh" for \
+#     babarot/enhancd
+
+# zi lucid light-mode wait for \
+#     blockf \
+#   marlonrichert/zsh-autocomplete
+
+zi for \
+  atload'
+    zicompinit; zicdreplay;
+    _zsh_autosuggest_bind_widgets' \
+  as'null' \
+  id-as'zinit/cleanup' \
+  lucid \
+  nocd \
+  wait \
+    zdharma-continuum/null
+
+# source your own alias file if exists
+[[ -f "$ZDOTDIR/.alias.sh" ]] && source "$ZDOTDIR/.alias.sh"
+
+# source your own function file if exists
+[[ -f "$ZDOTDIR/.fun.sh" ]] && source "$ZDOTDIR/.fun.sh"
+
+# ource your own shrc file if exists
+[[ -f "$ZDOTDIR/.postset.sh" ]] && source "$ZDOTDIR/.postset.sh"

@@ -1,0 +1,392 @@
+#!/usr/bin/env zsh
+#
+# numToStr zinit configuration
+#
+#
+[[ -f ~/.config/.zsh.sh ]] && . ~/.config/.zsh.sh
+
+#=== HELPER METHODS ===================================
+function error() { print -P "%F{160}[ERROR] ---%f%b $1" >&2 && exit 1; }
+function info() { print -P "%F{34}[INFO] ---%f%b $1"; }
+#=== ZINIT ============================================
+typeset -gAH ZINIT;
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+ZI_REPO='zdharma-continuum'; GH_RAW_URL='https://raw.githubusercontent.com'
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+if [[ ! -d $ZINIT_HOME/.git ]]; then
+  info 'Downloading Zinit' \
+    && command git clone \
+        https://github.com/$ZI_REPO/zinit \
+        $ZINIT_HOME \
+    || error 'Unable to download zinit' \
+    && info 'Installing Zinit' \
+    && command chmod g-rwX $(dirname $ZINIT_HOME) \
+    && zcompile $ZINIT_HOME/zinit.zsh \
+    && info 'Successfully installed Zinit' \
+    || error 'Unable to install Zinit'
+fi
+source $ZINIT_HOME/zinit.zsh \
+  && autoload -Uz _zinit \
+  && (( ${+_comps} )) \
+  && _comps[zinit]=_zinit
+
+#
+#####################
+# PROMPT            #
+#####################
+zinit lucid for \
+    as"command" \
+    from"gh-r" \
+    atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' atload'eval "$(starship init zsh)"' \
+    starship/starship
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+  $ZI_REPO/zinit-annex-as-monitor \
+  $ZI_REPO/zinit-annex-bin-gem-node \
+  $ZI_REPO/zinit-annex-patch-dl \
+  $ZI_REPO/zinit-annex-rust \
+  $ZI_REPO/zinit-annex-submods
+
+### End of Zinit's installer chunk
+
+### tmux
+zinit for \
+    as'null' \
+    configure"--disable-utf8proc --prefix=$ZINIT[PLUGINS_DIR]/tmux --quiet" \
+    id-as \
+    make"PREFIX=$ZINIT[PLUGINS_DIR]/tmux --quiet install" \
+    sbin"**/tmux -> tmux" \
+  @tmux/tmux
+
+# git-flow
+# zinit for \
+#     as'null' \
+#     id-as \
+#     make"install prefix=$ZINIT[PLUGINS_DIR]/gitflow" \
+#     sbin"bin/git-flow -> git-flow;" \
+#   nvie/gitflow
+zinit for \
+    as'null' \
+    id-as \
+    atclone"make install prefix=$ZINIT[PLUGINS_DIR]/gitflow" \
+    atpull"%atclone" \
+    sbin"bin/git-flow -> git-flow;" \
+  petervanderdoes/gitflow
+
+# git-flow-completions
+zinit for \
+    pick"*.zsh" \
+  wizard-28/git-flow-completion
+
+#
+##########################
+# OMZ Libs and Plugins   #
+##########################
+# IMPORTANT:
+# Ohmyzsh plugins and libs are loaded first as some these sets some defaults which are required later on.
+# Otherwise something will look messed up
+# ie. some settings help zsh-autosuggestions to clear after tab completion
+setopt promptsubst
+# Explanation:
+# 1. Loading tmux first, to prevent jumps when tmux is loaded after .zshrc
+# 2. History plugin is loaded early (as it has some defaults) to prevent empty history stack for other plugins
+zinit lucid for \
+    atinit"
+      ZSH_TMUX_FIXTERM=false
+      ZSH_TMUX_AUTOSTART=false
+      ZSH_TMUX_AUTOCONNECT=false" \
+  OMZP::tmux \
+  atinit"HIST_STAMPS=dd.mm.yyyy" \
+  OMZL::history.zsh \
+
+zinit wait lucid for \
+	OMZL::clipboard.zsh \
+	OMZL::compfix.zsh \
+	OMZL::completion.zsh \
+	OMZL::correction.zsh \
+    atload"
+      alias ..='cd ..'
+      alias ...='cd ../..'
+      alias ....='cd ../../..'
+      alias .....='cd ../../../..'" \
+	OMZL::directories.zsh \
+	OMZL::git.zsh \
+	OMZL::grep.zsh \
+	OMZL::key-bindings.zsh \
+	OMZL::spectrum.zsh \
+  OMZL::functions.zsh \
+	OMZL::termsupport.zsh \
+    atload"alias gcd='gco dev'" \
+	OMZP::git \
+	OMZP::fzf \
+    atload"
+      alias dcupb='docker-compose up --build'" \
+	OMZP::docker-compose \
+    as"completion" \
+  OMZP::docker/completions/_docker \
+  djui/alias-tips \
+  hlissner/zsh-autopair \
+  chriskempson/base16-shell
+#####################
+# PLUGINS           #
+#####################
+zinit wait lucid for \
+    light-mode \
+    atinit"
+      ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+      bindkey '^_' autosuggest-execute
+      bindkey ',' autosuggest-accept" \
+    atload"_zsh_autosuggest_start" \
+  zsh-users/zsh-autosuggestions \
+    light-mode \
+    atinit"
+      typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100;" \
+  $ZI_REPO/fast-syntax-highlighting \
+    atpull'zinit creinstall -q .' \
+    atinit"
+      zstyle ':completion:*' completer _expand _complete _ignored _approximate
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+      zstyle ':completion:*' menu select=2
+      zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+      zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm,cmd -w -w'
+      zstyle ':completion:*:descriptions' format '-- %d --'
+      zstyle ':completion:*:processes' command 'ps -au$USER'
+      zstyle ':completion:complete:*:options' sort false" \
+    blockf \
+    light-mode \
+  zsh-users/zsh-completions \
+    atinit"
+      zstyle :history-search-multi-word page-size 10
+      zstyle :history-search-multi-word highlight-color fg=red,bold
+      zstyle :plugin:history-search-multi-word reset-prompt-protect 1" \
+    bindmap"^R -> ^H" \
+  $ZI_REPO/history-search-multi-word \
+    atclone"
+      local P=${${(M)OSTYPE:#*darwin*}:+g}
+      \${P}sed -i \
+      '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
+      \${P}dircolors -b LS_COLORS > c.zsh" \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”' \
+    atpull'%atclone' \
+    pick"c.zsh" \
+    nocompile'!' \
+    reset-prompt \
+  trapd00r/LS_COLORS
+
+# 快速目录跳转
+zinit ice lucid wait'!0'
+zinit light skywind3000/z.lua
+# zinit light Aloxaf/fzf-tab
+
+# git-extras
+zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+zinit light tj/git-extras
+
+# navi
+zinit ice wait"1" lucid
+zinit light denisidoro/navi
+
+# thefuck
+zinit ice wait"1" lucid
+zinit light laggardkernel/zsh-thefuck
+
+# sharkdp/fd
+zinit ice as"command" from"gh-r" mv"fd*/fd -> fd" pick"fd"
+zinit light sharkdp/fd
+
+# sharkdp/bat
+zinit ice as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat"
+zinit light sharkdp/bat
+
+# ogham/exa, replacement for ls
+# zinit ice wait"2" lucid from"gh-r" as"program" mv"bin/exa* -> exa"
+zinit ice as"command" from"gh-r" mv"exa* -> exa" pick"bin/exa"
+zinit light ogham/exa
+
+# # BurntSushi/ripgrep
+zi for \
+    from'gh-r' \
+    sbin'**/rg -> rg' \
+  BurntSushi/ripgrep
+
+#junegunn/fzf-bin
+zi for \
+    from'gh-r' \
+    sbin'fzf' \
+  junegunn/fzf \
+ # https://github.com/junegunn/fzf/raw/master/shell/{"completion","key-bindings"}.zsh
+
+# gh, git-mkver, git-sizer
+zi from"gh-r" for \
+    sbin"**/gh" \
+  cli/cli \
+    sbin"git-sizer" \
+  @github/git-sizer \
+    sbin"**/lazygit" \
+  jesseduffield/lazygit
+
+# glow
+zi for \
+    from"gh-r" \
+    sbin"**/glow" \
+  charmbracelet/glow
+
+# b4b4r07/httpstat
+zinit ice as"program" mv"httpstat.sh -> httpstat" \
+    pick"httpstat" atpull'!git reset --hard'
+zinit light b4b4r07/httpstat
+
+#derailed/k9s
+zinit ice as"command" from"gh-r" mv"k9s* -> k9s" pick"derailed/k9s"
+zinit light derailed/k9s
+
+#sharkdp/hyperfine 命令行基准测试工具
+zinit ice as"command" from"gh-r" mv"hyperfine*/hyperfine -> hyperfine" pick"sharkdp/hyperfine"
+zinit light sharkdp/hyperfine
+
+#dbrgn/tealdeer
+zinit ice as"command" from"gh-r" mv"tealdeer* -> tldr" pick"dbrgn/tealdeer"
+zinit light dbrgn/tealdeer
+
+#chmln/sd sed 查找和替换
+zinit ice as"command" from"gh-r" mv"sd* -> sd" pick"sd"
+zinit light chmln/sd
+
+#dandavison/delta git diff
+zinit ice as"command" from"gh-r" mv"delta* -> delta" pick"delta"
+zinit light dandavison/delta
+
+# ogham/dog dns
+zinit ice as"command" from"gh-r" mv"bin/dog* -> dog" pick"bin/dog"
+zinit light ogham/dog
+
+# knqyf263/pet 命令描述,按描述查找
+zinit ice as"command" from"gh-r" pick"pet"
+zinit light knqyf263/pet
+
+# alexellis/arkade k8s应用管理
+zinit ice as"command" from"gh-r" mv"arkade* -> arkade" pick"arkade"
+zinit light alexellis/arkade
+
+# atuinsh/atuin 历史命令管理
+zinit ice as"command" from"gh-r" mv"atuin* -> atuin" pick"atuin"
+zinit light atuinsh/atuin
+
+# akavel/up 交互式管道工具
+zinit ice as"command" from"gh-r" mv"up* -> up" pick"up"
+zinit light akavel/up
+
+# helix-editor/helix 终端文本编辑工具 体积很大
+zinit ice as"command" from"gh-r" mv"helix*/hx -> hx" pick"helix/hx"
+zinit light helix-editor/helix 
+
+# djui/alias-tips 别名提醒
+zinit load djui/alias-tips
+
+# jq
+# zi for \
+#     from'gh-r' \
+#     sbin'* -> jq' \
+#     nocompile \
+#   @jqlang/jq
+zi for \
+    atclone'autoreconf -fi \
+      && ./configure --with-oniguruma=builtin \
+      && make \
+      && ln -sfv $PWD/jq.1 $ZPFX/man/man1' \
+    as'null' \
+    from'gh-r' \
+    if'[[ -n "$commands[jq]" ]]' \
+    sbin'jq' \
+  jqlang/jq
+
+# tmux
+
+# neovim
+zinit for \
+    from'gh-r' \
+    sbin'**/nvim -> nvim' \
+    ver'nightly' \
+  neovim/neovim
+
+# shfmt
+zi for \
+    from'gh-r' \
+    sbin'**/sh* -> shfmt' \
+  @mvdan/sh
+
+# tokei
+zi for \
+    from'gh-r' \
+    sbin'**/tokei -> tokei' \
+  XAMPPRocky/tokei
+
+# Homebrew
+# zi for \
+#     as'null' \
+#     atclone'%atpull' \
+#     atpull'./bin/brew update --preinstall \
+#       && ln -sf $PWD/completions/zsh/_brew $ZINIT[COMPLETIONS_DIR] \
+#       && rm -f brew.zsh \
+#       && ./bin/brew shellenv --dummy-arg > brew.zsh \
+#       && zcompile brew.zsh' \
+#     depth'3' \
+#     nocompletions \
+#     sbin'bin/brew' \
+#     src'brew.zsh' \
+#   homebrew/brew
+
+# sdkman
+# zinit ice as"program" pick"$ZPFX/sdkman/bin/sdk" id-as'sdkman' run-atpull \
+#   atclone"curl https://get.sdkman.io -o scr.sh; SDKMAN_DIR=$ZPFX/sdkman bash scr.sh" \
+#   atpull"SDKMAN_DIR=$ZPFX/sdkman sdk selfupdate" \
+#   atinit"export SDKMAN_DIR=$ZPFX/sdkman; source $ZPFX/sdkman/bin/sdkman-init.sh"
+# zinit light zdharma-continuum/null
+
+
+# asdf
+# zinit lucid wait for \
+#     id-as"asdf" \
+#     atload"source ${ZINIT[PLUGINS_DIR]}/asdf*/asdf.sh; zicompinit; zicdreplay" \
+#     light-mode \
+#   @asdf-vm/asdf
+zinit ice id-as"asdf" atload"source ${ZINIT[PLUGINS_DIR]}/asdf*/asdf.sh" completions
+zinit light asdf-vm/asdf
+
+#####################
+# PROGRAMS          #
+#####################
+# zinit wait'1' lucid light-mode for \
+#     pick"z.sh" \
+#   knu/z \
+#     as'command' \
+#     atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' \
+#     pick"**/n" \
+#   tj/n 
+#     from'gh-r' as'command' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
+#   yarnpkg/yarn
+
+zi for atload'
+      zicompinit; zicdreplay
+      _zsh_highlight_bind_widgets
+      _zsh_autosuggest_bind_widgets' \
+    as'null' id-as'zinit/cleanup' lucid nocd wait \
+  $ZI_REPO/null
+
+# source your own shrc file if exists
+[[ -f ~/.config/.env.sh ]] && source ~/.config/.env.sh
+
+# source your own alias file if exists
+[[ -f ~/.config/.alias.sh ]] && source ~/.config/.alias.sh
+
+# source your own function file if exists
+[[ -f ~/.config/.fun.sh ]] && source ~/.config/.fun.sh
+
+# source your proxy shrc file if exists
+[[ -f ~/.config/.proxy.sh ]] && source ~/.config/.proxy.sh
+
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
+# bindkey ',' autosuggest-accept

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.dc.biz.dao.po.Equipment" table="EQUIPMENTTBL">
+		<id name="eid" type="java.lang.String">
+			<column name="EID" length="64" unique="true" not-null="true" />
+		</id>
+		<many-to-one name="collectCenter" class="com.dc.biz.dao.po.CollectCenter" lazy="false" fetch="join">
+			<column name="CLID" precision="22" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="consultationCenter" class="com.dc.biz.dao.po.ConsultationCenter" lazy="false" fetch="join">
+			<column name="CSID" precision="22" scale="0" not-null="true" />
+		</many-to-one>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" length="256" not-null="true" />
+		</property>
+		<property name="esname" type="java.lang.String">
+			<column name="ESNAME" length="256" not-null="true" />
+		</property>
+		<property name="telephone" type="java.lang.String">
+			<column name="TELEPHONE" length="64" />
+		</property>
+		<property name="medicalExaminationStartTime" type="java.lang.String">
+			<column name="MEDICAL_EXAMINATION_START_TIME" length="13" />
+		</property>
+		<property name="medicalExaminationEndTime" type="java.lang.String">
+			<column name="MEDICAL_EXAMINATION_END_TIME" length="13" />
+		</property>
+		<property name="medicalOrganizationCode" type="java.lang.String">
+			<column name="MEDICAL_ORGANIZATION_CODE" length="50" />
+		</property>
+		<property name="collectdocid" type="java.lang.String">
+            <column name="COLLECTDOCID" length="30" />
+        </property>
+        <property name="status" type="java.lang.Long">
+            <column name="STATUS" precision="22" scale="0" />
+        </property>
+	</class>
+</hibernate-mapping>

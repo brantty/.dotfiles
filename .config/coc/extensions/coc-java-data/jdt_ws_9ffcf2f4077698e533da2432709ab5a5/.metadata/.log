@@ -1,0 +1,189 @@
+!SESSION 2022-08-12 10:19:05.906 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_322
+java.vendor=Azul Systems, Inc.
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=zh_CN
+Command-line arguments:  -data /Users/derek/.config/coc/extensions/coc-java-data/jdt_ws_9ffcf2f4077698e533da2432709ab5a5
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-08-12 10:19:06.752
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-08-12 10:19:06.810
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-08-12 10:19:06.827
+!MESSAGE >> initialize
+!SESSION 2022-09-09 10:32:34.652 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_322
+java.vendor=Azul Systems, Inc.
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=zh_CN
+Command-line arguments:  -data /Users/derek/.config/coc/extensions/coc-java-data/jdt_ws_9ffcf2f4077698e533da2432709ab5a5
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:35.622
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:35.696
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:35.711
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:35.718
+!MESSAGE Initializing Java Language Server 0.57.0.202006172108
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.575
+!MESSAGE Default VM Install changed from  null to 1662690756570-/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.584
+!MESSAGE Setting /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home as 'JavaSE-1.8' environment (id:1662690756570)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.585
+!MESSAGE Setting /Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home as 'JavaSE-1.7' environment (id:1662690756585)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.586
+!MESSAGE Invalid runtime: JavaEnvironment [name=JavaSE-11, path=/opt/homebrew/Cellar/openjdk@11/11.0.6/libexec/openjdk.jdk/Contents/Home, javadoc=null, sources=null]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.586
+!MESSAGE Setting /Library/Java/JavaVirtualMachines/zulu-13.jdk/Contents/Home as 'JavaSE-13' environment (id:com.azul.zulu.13.0.9.jdk)
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2022-09-09 10:32:36.587
+!MESSAGE Runtime at '/Library/Java/JavaVirtualMachines/zulu-15.jdk/Contents/Home' is not compatible with the 'JavaSE-15' environment
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.588
+!MESSAGE Invalid runtime: JavaEnvironment [name=JavaSE-18, path=/opt/homebrew/Cellar/openjdk/18.0.2/libexec/openjdk.jdk/Contents/Home, javadoc=null, sources=null]
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2022-09-09 10:32:36.588
+!MESSAGE Runtime at '/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home' is not compatible with the 'JavaSE-17' environment
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.588
+!MESSAGE JVM Runtimes changed, saving new configuration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.596
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.597
+!MESSAGE Non-Static Commands: [java.edit.organizeImports, java.project.refreshDiagnostics, java.project.import, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.provideSemanticTokens, java.project.getAll, java.project.isTestFile, java.project.getClasspaths, java.project.getSemanticTokensLegend, java.project.getSettings, java.project.updateSourceAttachment, java.project.resolveSourceAttachment, java.project.addToSourcePath]
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:36.607
+!MESSAGE System property http.proxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.607
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:36.607
+!MESSAGE System property http.proxyPort has been set to 7890 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:36.608
+!MESSAGE System property http.nonProxyHosts has been set to 192.168.0.0/16|*.192.168.0.0/16|10.0.0.0/8|*.10.0.0.0/8|172.16.0.0/12|*.172.16.0.0/12|127.0.0.1|localhost|*.localhost|local|*.local|crashlytics.com|*.crashlytics.com|www.scootersoftware.com|*.www.scootersoftware.com|scootersoftware.com|*.scootersoftware.com|account.git-tower.com|*.account.git-tower.com|updates.fournova.com|*.updates.fournova.com|crystalidea.com|*.crystalidea.com|www.crystalidea.com|*.www.crystalidea.com|v3pro.crystalidea.com|*.v3pro.crystalidea.com|www.sublimetext.com|*.www.sublimetext.com|sublimetext.com|*.sublimetext.com|license.sublimehq.com|*.license.sublimehq.com|api.royalapps.com|*.api.royalapps.com by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:36.608
+!MESSAGE System property https.proxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:36.608
+!MESSAGE System property https.proxyPort has been set to 7890 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:36.608
+!MESSAGE System property socksProxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:36.608
+!MESSAGE System property socksProxyPort has been set to 7890 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.617
+!MESSAGE Creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.689
+!MESSAGE Finished creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:36.803
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:39.378
+!MESSAGE Workspace initialized in 2780ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:39.470
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:39.474
+!MESSAGE >> workspace/didChangeConfiguration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:39.475
+!MESSAGE Invalid runtime: JavaEnvironment [name=JavaSE-11, path=/opt/homebrew/Cellar/openjdk@11/11.0.6/libexec/openjdk.jdk/Contents/Home, javadoc=null, sources=null]
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2022-09-09 10:32:39.475
+!MESSAGE Runtime at '/Library/Java/JavaVirtualMachines/zulu-15.jdk/Contents/Home' is not compatible with the 'JavaSE-15' environment
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:39.475
+!MESSAGE Invalid runtime: JavaEnvironment [name=JavaSE-18, path=/opt/homebrew/Cellar/openjdk/18.0.2/libexec/openjdk.jdk/Contents/Home, javadoc=null, sources=null]
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2022-09-09 10:32:39.475
+!MESSAGE Runtime at '/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home' is not compatible with the 'JavaSE-17' environment
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:39.480
+!MESSAGE >> New configuration: {java={enabled=true, jdt={ls={vmargs=-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication}}, errors={incompleteClasspath={severity=warning}}, configuration={checkProjectSettingsExclusions=true, updateBuildConfiguration=interactive, runtimes=[{name=JavaSE-18, path=/opt/homebrew/Cellar/openjdk/18.0.2/libexec/openjdk.jdk/Contents/Home}, {name=JavaSE-17, path=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home}, {name=JavaSE-15, path=/Library/Java/JavaVirtualMachines/zulu-15.jdk/Contents/Home}, {name=JavaSE-13, path=/Library/Java/JavaVirtualMachines/zulu-13.jdk/Contents/Home}, {name=JavaSE-11, path=/opt/homebrew/Cellar/openjdk@11/11.0.6/libexec/openjdk.jdk/Contents/Home}, {name=JavaSE-1.8, path=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home}, {name=JavaSE-1.7, path=/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home}]}, trace={server=off}, import={gradle={enabled=true, wrapper={enabled=true}, offline={enabled=false}}, maven={enabled=true}, exclusions=[**/node_modules/**, **/.metadata/**, **/archetype-resources/**, **/META-INF/maven/**]}, maven={updateSnapshots=false, downloadSources=false}, referencesCodeLens={enabled=false}, signatureHelp={enabled=false}, implementationsCodeLens={enabled=false}, format={enabled=true, comments={enabled=true}, onType={enabled=true, fixComment={enabled=true}}}, saveActions={organizeImports=false}, project={referencedLibraries=[lib/**/*.jar], resourceFilters=[node_modules, .git]}, autobuild={enabled=true}, maxConcurrentBuilds=1.0, completion={maxResults=0.0, enabled=true, overwrite=true, guessMethodArguments=false, favoriteStaticMembers=[org.junit.Assert.*, org.junit.Assume.*, org.junit.jupiter.api.Assertions.*, org.junit.jupiter.api.Assumptions.*, org.junit.jupiter.api.DynamicContainer.*, org.junit.jupiter.api.DynamicTest.*, org.mockito.Mockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Answers.*], filteredTypes=[java.awt.*, com.sun.*], importOrder=[java, javax, com, org]}, progressReports={enabled=true}, foldingRange={enabled=true}, codeGeneration={hashCodeEquals={useJava7Objects=false, useInstanceof=false}, useBlocks=false, generateComments=false, toString={template=${object.className} [${member.name()}=${member.value}, ${otherMembers}], codeStyle=STRING_CONCATENATION, skipNullValues=false, listArrayContents=true, limitElements=0.0}}, selectionRange={enabled=true}, sources={organizeImports={starThreshold=99.0, staticStarThreshold=99.0}}, templates={fileHeader=[], typeComment=[]}, references={includeAccessors=true}, home=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home}}
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:41.549
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:41.562
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:41.565
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+!SESSION 2022-09-09 10:32:42.227 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_322
+java.vendor=Azul Systems, Inc.
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=zh_CN
+Command-line arguments:  -data /Users/derek/.config/coc/extensions/coc-java-data/jdt_ws_9ffcf2f4077698e533da2432709ab5a5
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-09-09 10:32:42.551
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.152
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.209
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.223
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.230
+!MESSAGE Initializing Java Language Server 0.57.0.202006172108
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.240
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.241
+!MESSAGE Non-Static Commands: [java.edit.organizeImports, java.project.refreshDiagnostics, java.project.import, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.provideSemanticTokens, java.project.getAll, java.project.isTestFile, java.project.getClasspaths, java.project.getSemanticTokensLegend, java.project.getSettings, java.project.updateSourceAttachment, java.project.resolveSourceAttachment, java.project.addToSourcePath]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.251
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:43.253
+!MESSAGE System property http.proxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:43.253
+!MESSAGE System property http.proxyPort has been set to 7890 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:43.253
+!MESSAGE System property http.nonProxyHosts has been set to 192.168.0.0/16|*.192.168.0.0/16|10.0.0.0/8|*.10.0.0.0/8|172.16.0.0/12|*.172.16.0.0/12|127.0.0.1|localhost|*.localhost|local|*.local|crashlytics.com|*.crashlytics.com|www.scootersoftware.com|*.www.scootersoftware.com|scootersoftware.com|*.scootersoftware.com|account.git-tower.com|*.account.git-tower.com|updates.fournova.com|*.updates.fournova.com|crystalidea.com|*.crystalidea.com|www.crystalidea.com|*.www.crystalidea.com|v3pro.crystalidea.com|*.v3pro.crystalidea.com|www.sublimetext.com|*.www.sublimetext.com|sublimetext.com|*.sublimetext.com|license.sublimehq.com|*.license.sublimehq.com|api.royalapps.com|*.api.royalapps.com by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:43.265
+!MESSAGE System property https.proxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:43.265
+!MESSAGE System property https.proxyPort has been set to 7890 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:43.266
+!MESSAGE System property socksProxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2022-09-09 10:32:43.266
+!MESSAGE System property socksProxyPort has been set to 7890 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.420
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2022-09-09 10:32:43.485
+!MESSAGE Workspace initialized in 241ms
