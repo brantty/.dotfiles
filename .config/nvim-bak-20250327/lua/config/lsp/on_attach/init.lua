@@ -4,7 +4,7 @@ local function inlay_hints_on_attach(client, bufnr)
 	local inlay_lsp = {
 		"gopls",
 		"rust_analyzer",
-		"zls",
+		-- "zls",
 	}
 	if vim.tbl_contains(inlay_lsp, client.name) then
 		vim.lsp.inlay_hint.enable()

@@ -8,14 +8,14 @@ alias cd.. "cd .."
 
 alias gti git
 
-if type -q nvim
+# if type -q nvim
     alias v="nvim"
     alias vz="NVIM_APPNAME=nvim-lazyvim nvim"
     alias vc="NVIM_APPNAME=nvim-nvchad nvim"
     alias va="NVIM_APPNAME=nvim-astronvim nvim"
     alias vi="NVIM_APPNAME=nvim-lunarvim nvim"
     alias vk="NVIM_APPNAME=nvim-kickstart nvim"
-end
+# end
 
 if type -q eza
     alias ls="eza -alf --color=always --sort=size | grep -v /"

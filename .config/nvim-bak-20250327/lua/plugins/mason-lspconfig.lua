@@ -25,7 +25,7 @@ local opts = {
 		-- "tsserver",
 		"volar",
 		"yamlls",
-		"zls",
+		-- "zls",
 	},
 	automatic_installation = true,
 }

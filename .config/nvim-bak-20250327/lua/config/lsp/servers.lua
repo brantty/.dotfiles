@@ -71,7 +71,7 @@ function M.init(lspconfig)
 			"templ",
 			"yamlls",
 			"azure_pipelines_ls",
-			"zls",
+			-- "zls",
 		},
 		tailwindcss = {
 			filetypes = {
@@ -219,6 +219,9 @@ function M.init(lspconfig)
 					},
 				},
 			},
+		},
+		zls = {
+			cmd = { "zls" },
 		},
 	}
 
