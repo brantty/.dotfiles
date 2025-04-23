@@ -1,27 +1,14 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
+local config = require("config")
+require("events")
 
-return {
-	-- font
-	font_size = 15,
-	font = wezterm.font("Red Hat Mono"),
-	-- font = wezterm.font_with_fallback({ "Hack Nerd Font", { family =
-	-- "JetBrainsMono Nerd Font", scale = 0.75 } }),
-	use_cap_height_to_scale_fallback_fonts = true,
-	-- colorscheme
-	color_scheme = "Chester", -- Dracula (Official), Sonokai (Gogh), tokyonight, Chester
-	-- window management
-	window_padding = {
-		left = 5,
-		right = 5,
-		top = 5,
-		bottom = 3,
-	},
-	window_decorations = "RESIZE",
-	window_background_opacity = 0.90,
-	macos_window_background_blur = 50,
-	hide_tab_bar_if_only_one_tab = true,
-	initial_cols = 150,
-	initial_rows = 40,
-	max_fps = 120,
+-- Apply color scheme based on the WEZTERM_THEME environment variable
+local themes = {
+	nord = "Nord (Gogh)",
+	onedark = "One Dark (Gogh)",
 }
+local success, stdout, stderr = wezterm.run_child_process({ os.getenv("SHELL"), "-c", "printenv WEZTERM_THEME" })
+local selected_theme = stdout:gsub("%s+", "") -- Remove all whitespace characters including newline
+config.color_scheme = themes[selected_theme]
+
+return config
