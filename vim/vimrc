@@ -1,0 +1,161 @@
+syntax on                  " Enable syntax highlighting.
+filetype plugin indent on  " Enable file type base options.
+
+set nocompatible           " Don't run in backwards compatible mode.
+
+let s:vimswapdir = (exists('$XDG_DATA_HOME') ? $XDG_DATA_HOME : $HOME . '/vim') .'/swap'
+if !isdirectory(s:vimswapdir)
+  call mkdir(s:vimswapdir, 'p')
+endif
+let &directory=s:vimswapdir . "//" " Note that double delimiter at the end; this settings won't work correctly without it!
+
+let s:viminfodir = (exists('$XDG_CACHE_HOME') ? $XDG_CACHE_HOME : $HOME . '/.cache') . '/vim'
+if !isdirectory(s:viminfodir)
+  call mkdir(s:viminfodir, 'p')
+endif
+let &viminfofile=s:viminfodir . "/viminfo"
+
+set autoindent             " Respect indentation when starting a new line.
+autocmd filetype python set expandtab	 " Expand tabs to sapces (for Python).
+autocmd filetype python set tabstop=4	 " Number of spaces tab is counted for.
+autocmd filetype python set shiftwidth=4 " Number of spaces for autoindent.
+
+" Navigate windows with <Ctrl-hjkl> instead of <Ctrl-w> followed by hjkl.
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+
+tnoremap <c-h> <c-w>h
+tnoremap <c-j> <c-w>j
+tnoremap <c-k> <c-w>k
+tnoremap <c-l> <c-w>l
+
+autocmd filetype python set foldmethod=indent " Indentation-based folding.
+
+set wildmenu                   " Enable enhanced tab autocomplete.
+set wildmode=list:longest,full " Complete till longest string, then open menu.
+
+set number                     " Display column numbers.
+set relativenumber             " Display relative column numbers.
+
+set hlsearch                   " Highlight search results.
+set incsearch                  " Search as you type.
+
+set clipboard=unnamed,unnamedplus " Copy into system (*, +) registers.
+
+set termguicolors
+
+" Download and install vim-plug (Linux, Mac, and Windows).
+if empty(glob(
+    \ '$HOME/' . (has('win32') ? 'vimfiles' : '.vim') . '/autoload/plug.vim'))
+  execute '!curl -fLo' . 
+    \ (has('win32') ? '\%USERPROFILE\%vimfiles' : '$HOME/.vim') .
+    \ '/autoload/plug.vim --create-dirs ' .
+    \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin() " Manage plugins with vim-plug.
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'mileszs/ack.vim'
+" Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+
+Plug 'mbbill/undotree'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'vim-test/vim-test'
+
+Plug 'dense-analysis/ale'
+
+Plug 'vim-scripts/ScrollColors'
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+
+Plug 'vim-airline/vim-airline'
+
+Plug 'flazz/vim-colorschemes'
+
+" Plug 'christoomey/vim-tmux-navigator'
+
+call plug#end()
+
+set background=dark
+colorscheme  PaperColor " Change a colorscheme.
+
+set title
+let &titleold = getcwd()
+
+set shortmess=atI
+
+" Always display a status line (it gets hidden sometimes otherwise).
+set laststatus=2
+
+" Show last command in the status line.
+set showcmd
+" set rtp+="$HOME/.vim/plugged/vim-colorschemes"
+
+" Map arrow keys nothing so I can get used to hjkl-style movement.
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Immediately add a closing quotes or braces in insert mode.
+" inoremap ' ''<esc>i
+" inoremap " ""<esc>i
+" inoremap ( ()<esc>i
+" inoremap { {}<esc>i
+" inoremap [ []<esc>i
+
+" Map the leader key to a spacebar.
+let mapleader = "\<space>"
+
+" Save a file with leader-w.
+noremap <leader>w :w<cr>
+
+noremap <leader>n :NERDTreeToggle<cr>
+
+" Remap CtrlP actions to be prefixed by a leader key.
+noremap <leader>p :CtrlP<cr>
+noremap <leader>b :CtrlPBuffer<cr>
+noremap <leader>m :CtrlPMRU<cr>
+
+let g:plug_timeout = 300 " Increase vim-plug timeout for YouCompleteMe.
+
+noremap <leader>] :YcmCompleter GoTo<cr>
+
+set tags=tags; " Look for a tags file recursively in parent directories
+
+" Regenerate tags when saving Python files.
+autocmd BufWritePost *.py silent! !ctags -R &
+
+noremap <f5> :UndotreeToggle<cr> "Map Undotree to <F5>
+
+" vim-test
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+" Override the :make behavior when only working on Python files.
+autocmd filetype python setlocal makeprg=python3\ -m\ pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
+autocmd filetype python setlocal errorformat=%f:%l:\ %m
+
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_completion_enabled = 1
+" Disable whitespace warnings
+let g:ale_warn_about_trailing_whitespace = 0
+
+
