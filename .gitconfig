@@ -6,7 +6,7 @@
   autocrlf = false
   editor = nvim
   safecrlf = true
-  pager = bat
+	pager = delta
 [filter "lfs"]
   process = git-lfs filter-process
   required = true
@@ -89,7 +89,7 @@
   layout = "LOCAL,REMOTE"
 [merge]
   tool = nvimdiff
-  conflictstyle = diff3
+	conflictStyle = zdiff3
 [mergetool]
   keepBackup = false
   prompt = false
@@ -100,3 +100,7 @@
   rebase = true
 [init]
   defaultBranch = develop
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true

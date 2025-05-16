@@ -14,8 +14,14 @@ config = {
   check_for_updates = false,
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = false,
-  font_size = 12.5,
-  font = wezterm.font("Red Hat Mono", { weight = "Bold" }),
+  font_size = 14.5,
+  font = wezterm.font({
+		family = "Red Hat Mono", 
+		weight = 565, 
+		-- family = "JetBrainsMono Nerd Font", 
+		-- weight = "DemiBold", 
+		-- harfbuzz_features = { 'zero' }, 
+	}),
   enable_tab_bar = false,
   window_padding = {
     left = 3,

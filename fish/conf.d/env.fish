@@ -61,3 +61,5 @@ end
 if type -q nvim
     set -x MANPAGER 'nvim +Man!'
 end
+
+set -gx WEZTERM_THEME nord
