@@ -16,17 +16,17 @@ return {
       defaults = {
         mappings = {
           i = {
-            ["C-j"] = function(...)
+            ["<C-j>"] = function(...)
               require("telescope.actions").move_selection_next(...)
             end,
-            ["C-k"] = function(...)
+            ["<C-k>"] = function(...)
               require("telescope.actions").move_selection_previous(...)
             end,
-            ["C-n"] = function(...)
-              require("telescope.actions").move_cycle_history_next(...)
+            ["<C-n>"] = function(...)
+              require("telescope.actions").cycle_history_next(...)
             end,
-            ["C-p"] = function(...)
-              require("telescope.actions").move_cycle_history_prev(...)
+            ["<C-p>"] = function(...)
+              require("telescope.actions").cycle_history_prev(...)
             end,
           },
         },
@@ -41,21 +41,20 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {
-      plugins = { spelling = true },
-      spec = {
-        {
-          mode = { "n", "v" },
-          { "<leader>f", group = "+File" },
-          { "<leader>q", group = "+Quit/Session" },
-          { "<leader>qq", "<cmd>q<cr>", desc = "Quit" },
+    opts = function(_, opts)
+      opts = opts or {}
+      vim.tbl_deep_extend("force", opts, {
+        plugins = { spelling = true },
+        spec = {
+          {
+            mode = { "n", "v" },
+            { "<leader>f", group = "+File" },
+            { "<leader>q", group = "+Quit/Session" },
+            { "<leader>qq", "<cmd>q<cr>", desc = "Quit" },
+            { "<leader>w", "<cmd>update!<cr>", desc = "Save" },
+          },
         },
-      },
-    },
-    config = function(_, opts)
-      local wk = require "which-key"
-      wk.setup(opts)
-      -- wk.add(opts.spec)
+      })
     end,
   },
 }
