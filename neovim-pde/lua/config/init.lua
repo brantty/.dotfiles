@@ -1,12 +1,10 @@
 return {
   pde = {
+    cpp = true,
+    go = false,
+    java = true,
     lua = true,
     python = true,
-    cpp= true,
-    go = true,
     rust = true,
-    zig = true,
-    javacript = true,
-    typescript = true,
   },
 }

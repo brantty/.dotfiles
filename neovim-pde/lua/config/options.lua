@@ -1,11 +1,8 @@
--- [[ Setting options ]]
--- See `:help vim.o`
-
 local opt = vim.opt
 
 opt.autoindent = true
 opt.breakindent = true
-opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus" -- Access system clipboard
 opt.cmdheight = 0
 opt.completeopt = "menuone,noselect"
 opt.conceallevel = 0
@@ -53,10 +50,9 @@ opt.undofile = true
 opt.updatetime = 200
 opt.wildmode = "longest:full,full"
 
--- Set <space> as the leader key
--- See `:help mapleader`
--- Must happen before plugins are required (ohterwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+
+vim.g.markdown_recommended_style = 0
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })

@@ -2,16 +2,16 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("nde_" .. name, { clear = true })
 end
 
--- See `:help vim.highlight.on_yank`
+-- See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.hl.on_yank()
+    vim.highlight.on_yank()
   end,
   group = augroup "highlight_yank",
   pattern = "*",
 })
 
--- Go to last location when opening a buffer
+-- Go to last loction when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup "last_loc",
   callback = function()

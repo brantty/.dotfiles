@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "JoosepAlviste/nvim-ts-context-commentstring" 
+      "JoosepAlviste/nvim-ts-context-commentstring",
     },
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
@@ -23,16 +23,16 @@ return {
         "vimdoc",
         "yaml",
       },
-      highlight = { enable = true, additional_vim_regex_highlighting = {  "markdown" } },
+      highlight = { enable = true, additional_vim_regex_highlighting = { "markdown" } }, -- { "org", "markdown" } },
       indent = { enable = true },
       -- context_commentstring = { enable = true, enable_autocmd = false },
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<c-space>",
-          node_incremental = "<c-space>",
-          scope_incremental = "<c-s>",
-          node_decremental = "<M-space>",
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
         },
       },
       textobjects = {
