@@ -3,58 +3,149 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-project.nvim",
+      "cljoly/telescope-repo.nvim",
+      "stevearc/aerial.nvim",
+      "nvim-telescope/telescope-frecency.nvim",
+      "ahmedkhalf/project.nvim",
+      "aaronhallaert/advanced-git-search.nvim",
+      "benfowler/telescope-luasnip.nvim",
+      "olacin/telescope-cc.nvim",
+      "tsakirist/telescope-lazy.nvim",
+      "tiagovla/scope.nvim",
+      "jvgrootveld/telescope-zoxide",
+      "nvim-telescope/telescope-live-grep-args.nvim",
     },
     cmd = "Telescope",
-    -- stylua: ignore
     keys = {
+      { "<leader><space>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-      { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    },
-    opts = {
-      defaults = {
-        mappings = {
-          i = {
-            ["<C-j>"] = function(...)
-              require("telescope.actions").move_selection_next(...)
-            end,
-            ["<C-k>"] = function(...)
-              require("telescope.actions").move_selection_previous(...)
-            end,
-            ["<C-n>"] = function(...)
-              require("telescope.actions").cycle_history_next(...)
-            end,
-            ["<C-p>"] = function(...)
-              require("telescope.actions").cycle_history_prev(...)
-            end,
-          },
-        },
+      { "<leader>fo", "<cmd>Telescope frecency theme=dropdown previewer=false<cr>", desc = "Recent" },
+      { "<leader>fb", "<cmd>Telescope buffers sort_mru=true ignore_current_buffer=true<cr>", desc = "Buffers" },
+      { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+      { "<leader>fc", "<cmd>cd %:p:h<cr>", desc = "Change WorkDir" },
+      {
+        "<leader>fg",
+        function()
+          require("telescope").extensions.live_grep_args.live_grep_args()
+        end,
+        desc = "Live Grep",
+      },
+      { "<leader>fr", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
+      { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Recent Folders" },
+      { "<leader>gc", "<cmd>Telescope conventional_commits<cr>", desc = "Conventional Commits" },
+      { "<leader>zs", "<cmd>Telescope lazy<cr>", desc = "Search Plugins" },
+      { "<leader>ps", "<cmd>Telescope repo list<cr>", desc = "Search" },
+      { "<leader>hs", "<cmd>Telescope help_tags<cr>", desc = "Search" },
+      {
+        "<leader>pp",
+        function()
+          require("telescope").extensions.project.project { display_type = "minimal" }
+        end,
+        desc = "List",
+      },
+      -- { "<leader>sw", require("utils").telescope "live_grep", desc = "Grep (Root Dir)" },
+      -- { "<leader>sW", require("utils").telescope("live_grep", { cwd = false }), desc = "Grep (Cwd)" },
+      { "<leader>ss", "<cmd>Telescope luasnip<cr>", desc = "Snippets" },
+      {
+        "<leader>sb",
+        function()
+          require("telescope.builtin").current_buffer_fuzzy_find()
+        end,
+        desc = "Buffer",
+      },
+      { "<leader>vo", "<cmd>Telescope aerial<cr>", desc = "Code Outline" },
+      {
+        "<leader>zc",
+        function()
+          require("telescope.builtin").colorscheme { enable_preview = true }
+        end,
+        desc = "Colorscheme",
+      },
+      {
+        "<leader>su",
+        function()
+          require("telescope.builtin").live_grep { search_dirs = { vim.fs.dirname(vim.fn.expand "%") } }
+        end,
+        desc = "Grep (Current File Path)",
       },
     },
-    config = function(_, opts)
+    config = function(_, _)
       local telescope = require "telescope"
+      -- local icons = require "cnfig.icons"
+      local actions = require "telescope.actions"
+      local actions_layout = require "telescope.actions.layout"
+      local mappings = {
+        i = {
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+          ["<C-n>"] = actions.cycle_history_next,
+          ["<C-p>"] = actions.cycle_history_prev,
+          ["?"] = actions_layout.toggle_preview,
+        },
+      }
+
+      local opts = {
+        defaults = {
+          -- prompt_prefix = icons.ui.Telescope .. " ",
+          -- selection_caret = icons.ui.Forward .. " ",
+          mappings = mappings,
+          border = {},
+          borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+          color_devicons = true,
+        },
+        pickers = {
+          find_files = {
+            theme = "dropdown",
+            previewer = false,
+            hidden = true,
+            find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+          },
+          git_files = {
+            theme = "dropdown",
+            previewer = false,
+          },
+          buffers = {
+            theme = "dropdown",
+            previewer = false,
+          },
+        },
+        extensions = {
+          file_browser = {
+            theme = "dropdown",
+            previewer = false,
+            hijack_netrw = true,
+            mappings = mappings,
+          },
+          project = {
+            hidden_files = false,
+            theme = "dropdown",
+          },
+        },
+      }
       telescope.setup(opts)
       telescope.load_extension "fzf"
+      telescope.load_extension "file_browser"
+      telescope.load_extension "project"
+      telescope.load_extension "projects"
+      telescope.load_extension "aerial"
+      telescope.load_extension "dap"
+      telescope.load_extension "frecency"
     end,
   },
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      opts = opts or {}
-      vim.tbl_deep_extend("force", opts, {
-        plugins = { spelling = true },
-        spec = {
-          {
-            mode = { "n", "v" },
-            { "<leader>f", group = "+File" },
-            { "<leader>q", group = "+Quit/Session" },
-            { "<leader>qq", "<cmd>q<cr>", desc = "Quit" },
-            { "<leader>w", "<cmd>update!<cr>", desc = "Save" },
-          },
-        },
-      })
+    "stevearc/aerial.nvim",
+    config = true,
+  },
+  {
+    "ahmedkhalf/project.nvim",
+    config = function(_, _)
+      require("project_nvim").setup {
+        detection_methods = { "pattern", "lsp" },
+        pattern = { ".git" },
+        ignore_lsp = { "null-ls" },
+      }
     end,
   },
 }
