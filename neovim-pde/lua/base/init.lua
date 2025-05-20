@@ -47,6 +47,9 @@ return {
         { "<leader>d", group = "+DAP" },
 
         { "<leader>l", group = "+LSP" },
+
+        { "<leader>t", group = "+Test" },
+        { "<leader>tt", group = "+Task" },
       }
     end,
   },
