@@ -36,13 +36,13 @@ return {
       wk.add {
         { "<leader>g", group = "+Git" },
 
-        {
-          mode = { "n", "v" },
-          { "<leader>f", group = "+File" },
-          { "<leader>q", group = "+Quit/Session" },
-          { "<leader>qq", "<cmd>q<cr>", desc = "Quit" },
-          { "<leader>w", "<cmd>update!<cr>", desc = "Save" },
-        },
+        -- {
+        --   mode = { "n", "v" },
+        --   { "<leader>f", group = "+File" },
+        --   { "<leader>q", group = "+Quit/Session" },
+        --   { "<leader>qq", "<cmd>q<cr>", desc = "Quit" },
+        --   { "<leader>w", "<cmd>update!<cr>", desc = "Save" },
+        -- },
 
         { "<leader>d", group = "+DAP" },
 

@@ -37,6 +37,7 @@ return {
                 globals = {
                   "vim",
                   "vim.notify",
+                  "Snacks",
                 },
               },
               workspace = {
