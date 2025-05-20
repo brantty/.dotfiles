@@ -9,15 +9,33 @@ return {
       vim.list_extend(opts.ensure_installed, { "javascript", "typescript", "tsx" })
     end,
   },
-  -- {
-  --   "williamboman/mason.nvim",
-  --   opts = function(_, opts)
-  --     table.insert(opts.ensure_installed, "js-debug-adapter")
-  --   end,
-  -- },
+  {
+    "mason-org/mason.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, { "js-debug-adapter" })
+    end,
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    opts = {},
+    config = function(_, opts)
+      require("base.lsp.utils").on_attach(function(client, bufnr)
+        if client.name == "ts_ls" then
+          vim.keymap.set("n", "<leader>lo", "<cmd>TSToolsOrganizeImports<cr>", { buffer = bufnr, desc = "Organize Imports" })
+          vim.keymap.set("n", "<leader>lO", "<cmd>TSToolsSortImports<cr>", { buffer = bufnr, desc = "Sort Imports" })
+          vim.keymap.set("n", "<leader>lu", "<cmd>TSToolsRemoveUnused<cr>", { buffer = bufnr, desc = "Remove Unused" })
+          vim.keymap.set("n", "<leader>lz", "<cmd>TSToolsGoToSourceDefinition<cr>", { buffer = bufnr, desc = "Go To Source Definition" })
+          vim.keymap.set("n", "<leader>lR", "<cmd>TSToolsRemoveUnusedImports<cr>", { buffer = bufnr, desc = "Remove Unused Imports" })
+          vim.keymap.set("n", "<leader>lF", "<cmd>TSToolsFixAll<cr>", { buffer = bufnr, desc = "Fix All" })
+          vim.keymap.set("n", "<leader>lA", "<cmd>TSToolsAddMissingImports<cr>", { buffer = bufnr, desc = "Add Missing Imports" })
+        end
+      end)
+      require("typescript-tools").setup(opts)
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "jose-elias-alvarez/typescript.nvim" },
+    dependencies = { "pmizio/typescript-tools.nvim" },
     opts = {
       -- make sure mason installs the server
       servers = {
@@ -52,18 +70,6 @@ return {
         },
       },
       setup = {
-        ts_ls = function(_, opts)
-          require("base.lsp.utils").on_attach(function(client, bufnr)
-            if client.name == "tsserver" then
-              -- stylua: ignore
-              vim.keymap.set("n", "<leader>lo", "<cmd>TypescriptOrganizeImports<CR>", { buffer = bufnr, desc = "Organize Imports" })
-              -- stylua: ignore
-              vim.keymap.set("n", "<leader>lR", "<cmd>TypescriptRenameFile<CR>", { desc = "Rename File", buffer = bufnr })
-            end
-          end)
-          require("typescript").setup { server = opts }
-          return true
-        end,
         eslint = function()
           vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function(event)
@@ -79,12 +85,6 @@ return {
         end,
       },
     },
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      table.insert(opts.sources, require "typescript.extensions.null-ls.code-actions")
-    end,
   },
   {
     "mfussenegger/nvim-dap",
