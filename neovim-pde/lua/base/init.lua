@@ -50,6 +50,8 @@ return {
 
         { "<leader>t", group = "+Test" },
         { "<leader>tt", group = "+Task" },
+
+        { "<leader>lz", group = "+Color" },
       }
     end,
   },
