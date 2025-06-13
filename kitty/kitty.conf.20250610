@@ -815,7 +815,7 @@ font_size 14.0
 #: suffix of "c" on the width/height values to have them interpreted
 #: as number of cells instead of pixels.
 
-enabled_layouts Tall, stack
+# enabled_layouts *
 
 #: The enabled window layouts. A comma separated list of layout names.
 #: The special value all means all layouts. The first listed layout
@@ -831,7 +831,7 @@ enabled_layouts Tall, stack
 #: start_resizing_window. The cells value is used for horizontal
 #: resizing, and the lines value is used for vertical resizing.
 
-window_border_width 1pt
+# window_border_width 0.5pt
 
 #: The width of window borders. Can be either in pixels (px) or pts
 #: (pt). Values in pts will be rounded to the nearest number of pixels
@@ -846,7 +846,7 @@ window_border_width 1pt
 #: that setting a non-zero window_margin_width overrides this and
 #: causes all borders to be drawn.
 
-window_margin_width 10
+# window_margin_width 0
 
 #: The window margin (in pts) (blank area outside the border). A
 #: single value sets all four sides. Two values set the vertical and
@@ -877,7 +877,7 @@ window_margin_width 10
 #: placed centrally. A value of top-left means the padding will be
 #: only at the bottom and right edges.
 
-active_border_color #44ffff
+# active_border_color #00ff00
 
 #: The color for the border of the active window. Set this to none to
 #: not draw borders around the active window.
@@ -993,7 +993,6 @@ active_border_color #44ffff
 #: contents of the current tab.
 
 # tab_bar_style fade
-tab_bar_style powerline
 
 #: The tab bar style, can be one of:
 
@@ -1051,7 +1050,7 @@ tab_bar_style powerline
 #: The separator between tabs in the tab bar when using separator as
 #: the tab_bar_style.
 
-tab_powerline_style slanted
+# tab_powerline_style angled
 
 #: The powerline separator style between tabs in the tab bar when
 #: using powerline as the tab_bar_style, can be one of: angled,
@@ -1182,12 +1181,11 @@ tab_powerline_style slanted
 #: platform implements it, so use with care. Currently supported on
 #: macOS and KDE/X11.
 
-background_image /Users/derek/Downloads/pictures/night-desert.png
+# background_image none
 
 #: Path to a background image. Must be in PNG format.
 
 # background_image_layout tiled
-background_image_layout scaled
 
 #: Whether to tile, scale or clamp the background image. The value can
 #: be one of tiled, mirror-tiled, scaled, clamped, centered or
@@ -1206,7 +1204,7 @@ background_image_layout scaled
 #: decrease_background_opacity) or the remote control facility.
 #: Changing this option by reloading the config is not supported.
 
-background_tint 0.97
+# background_tint 0.0
 
 #: How much to tint the background image by the background color. This
 #: option makes it easier to read the text. Tinting is done using the
@@ -1214,7 +1212,7 @@ background_tint 0.97
 #: if background_opacity is set and transparent windows are supported
 #: or background_image is set.
 
-background_tint_gaps -10.0
+# background_tint_gaps 1.0
 
 #: How much to tint the background image at the window gaps by the
 #: background color, after applying background_tint. Since this is
@@ -1789,8 +1787,6 @@ macos_option_as_alt left
 
 #:     map f1 launch_tab vim
 #:     map f2 launch_tab emacs
-map f1 new_window_with_cwd
-map f2 launch --cwd=current $EDITOR .
 
 #: Similarly, to alias kitten invocation::
 
@@ -2464,5 +2460,3 @@ map f2 launch --cwd=current $EDITOR .
 # Catppuccin-Mocha
 include current-theme.conf
 # END_KITTY_THEME
-
-include keymappings.conf
